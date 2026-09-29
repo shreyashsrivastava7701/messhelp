@@ -80,7 +80,7 @@ Step-by-step laptop guide (VS Code and Claude Code): [RUN_LOCALLY.md](RUN_LOCALL
 | `/admin/students` | Hostel roster: search, add, remove, import from CSV, and bulk-upload photos named by roll number. |
 | `/admin/updates` | Post and pin announcements. |
 
-**Snack counter** (`/kiosk`, no sign-in): a committee member enters the kiosk PIN once on the counter device. Students
+**Snack counter** (`/kiosk`, also the third tab on the sign-in page; no sign-in): a committee member enters the kiosk PIN once on the counter device. Students
 press **Take photo** (matched against roster photos in the browser) or scan their ID card's QR/barcode. Each student
 gets one snack a day; a second try shows when they already took it. The manual Snacks page stays as a backup.
 
@@ -139,3 +139,7 @@ Import the repository in Vercel, add the same two environment variables, and add
 4. Realtime menu alerts
 5. AI complaint summary
 6. Snack tracking (QR first, then face)
+
+## Putting it online
+
+See [DEPLOY.md](DEPLOY.md) for GitHub + Vercel, step by step.
