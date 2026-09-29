@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Chart tokens (validated categorical order: blue, orange, aqua, yellow). */
+:root {
+  --chart-surface: #ffffff;
+  --chart-grid: #e7e5e4;
+  --chart-axis: #78716c;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --bar-good: #2a78d6;
+  --bar-bad: #e34948;
+}
