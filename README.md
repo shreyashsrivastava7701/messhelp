@@ -9,8 +9,6 @@ a committee dashboard with charts, live alerts, a food quality log and a no-logi
 - **Put it online (GitHub + Vercel):** [DEPLOY.md](DEPLOY.md)
 - **Making and publishing changes:** [UPDATING.md](UPDATING.md)
 
-The project folder and package are still called `messmate`.
-
 ## Stack
 
 - Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS 4

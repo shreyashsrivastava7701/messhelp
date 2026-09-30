@@ -1,6 +1,6 @@
 # Chachu ka Mittar: architecture
 
-Chachu ka Mittar (the project folder is still called `messmate`) is one web app for the Kailash Boys Hostel mess at
+Chachu ka Mittar is one web app for the Kailash Boys Hostel mess at
 NIT Hamirpur, live at https://chachukamittar.vercel.app. Students see the menu, say whether they'll eat, rate meals
 and see what they've taken. The mess committee edits menus, reads feedback and charts, logs food quality, manages
 the student roster and posts updates. A no-login snack counter checks students by face or ID card.
@@ -112,7 +112,7 @@ for big folders). The committee's own login is used, and Storage policies only l
 ## 5. Folder map
 
 ```
-messmate/
+messhelp/
 ├─ src/
 │  ├─ middleware.ts              login check on every request
 │  ├─ app/
