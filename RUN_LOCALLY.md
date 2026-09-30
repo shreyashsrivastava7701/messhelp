@@ -8,7 +8,7 @@
 ## 1. Get the code and open it
 Either:
 - **From GitHub:** in VS Code press **Cmd+Shift+P**, choose **Git: Clone**, paste the repository link, and pick a folder; or
-- **From a zip:** unzip it, then in VS Code use **File > Open Folder…** and pick the `messmate` folder.
+- **From a zip:** unzip it, then in VS Code use **File > Open Folder…** and pick the `messhelp` folder.
 
 Open a terminal inside VS Code with **Terminal > New Terminal**.
 
