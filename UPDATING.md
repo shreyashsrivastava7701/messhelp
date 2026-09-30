@@ -1,77 +1,56 @@
-# Updating Chachu ka Mittar to a new version (Mac)
+# Making and publishing changes (Mac)
 
-Each new version comes as a zip. You swap the code folder, keep your keys, and run any new SQL once.
-Your data lives in Supabase, so nothing is lost when you swap folders.
+The code lives in your `messmate` folder, which is connected to GitHub. Vercel watches GitHub and rebuilds
+https://chachukamittar.vercel.app by itself after every push. Your data (menu, students, photos, ratings) lives
+in Supabase, so code changes never touch it.
 
-## 1. Stop the app
-In the VS Code terminal that runs `npm run dev`, press **Ctrl+C**.
+## Everyday changes
 
-## 2. Swap the folder, keep your keys
-1. Rename your current folder from `messmate` to `messmate-old` (in Finder: click it, press Enter, type the new name).
-2. Unzip the new zip and move the new `messmate` folder to the same place, e.g. Documents.
-3. Copy your keys file across. In the VS Code terminal (or the Terminal app):
+1. Edit and save files in VS Code (**Cmd+S**). If you like, check them first on http://localhost:3000
+   (`npm run dev`).
+2. Open **Source Control** (**Ctrl+Shift+G**). Changed files show an **M** (modified) or **U** (new).
+3. Type a short message such as `Fix menu text`, then click **Commit**. If it asks to stage all changes, click **Yes**.
+4. Click **Sync Changes** (or **Push**).
+5. About 1 to 2 minutes later the live site is updated. Watch it on vercel.com under **Deployments**.
+   If a deployment turns red, open it and copy the last red lines to Claude.
 
-   ```bash
-   cd ~/Documents            # or wherever the two folders are
-   cp messmate-old/.env.local messmate/.env.local
-   ```
+## Changes sent as files
 
-   `.env.local` is hidden in Finder. Press **Cmd+Shift+.** to show hidden files if you want to see it.
+When Claude sends you changed files:
 
-Why a fresh folder instead of copying new files over the old ones? New versions sometimes delete or move
-files, and an old leftover file can break the app.
+1. Stop the app with **Ctrl+C** if it's running.
+2. Put each file at the path given (replace the old one). Keep the same `messmate` folder: don't swap in a new
+   folder, because that would lose the connection to GitHub.
+3. If `package.json` changed, run `npm install`.
+4. Run any new SQL file (see below), then commit and sync as above.
 
-## 3. Open the new folder and start
-In VS Code: **File > Open Folder…** and pick the new `messmate`. Then in its terminal:
+## New SQL files
 
-```bash
-npm install
-npm run dev
-```
+Code goes live through GitHub, but the database doesn't: a new file in `supabase/migrations/` must be run once in
+Supabase > **SQL Editor** > **New query** > paste > **Run**. Never re-run one you already ran, and don't run the seed
+files again (they would add dummy data back).
 
-## 4. Run the new SQL (only the new files, once each)
-Supabase > **SQL Editor** > **+ New query** > paste the file > **Run**. Never re-run a migration you already ran.
+Already run on your project, in order:
 
-| Version | Run these, in this order |
+| File | What it adds |
 | --- | --- |
-| Step 1 | `supabase/migrations/20260929000000_init.sql`, then `supabase/seed.sql` |
-| Step 2 | `supabase/migrations/20260929020000_step2.sql`, then `supabase/seed_students.sql`, then `supabase/seed_weekly_menu.sql` |
-| Photos (v3) | `supabase/migrations/20260929030000_student_photos.sql` |
-| Dashboard, alerts, AI, quality (v4) | `supabase/migrations/20260929040000_steps3_5.sql` |
-| Snack kiosk, new name (v5) | `supabase/migrations/20260929050000_kiosk.sql` |
-| Kiosk learns faces itself (v6) | `supabase/migrations/20260929060000_kiosk_auto_faces.sql` |
+| `20260929000000_init.sql` | Accounts, meals, menus, tags, ratings |
+| `20260929020000_step2.sql` | Rating rules, Yes / No, updates, roster, snack log, weekly menu |
+| `20260929030000_student_photos.sql` | Student photo storage |
+| `20260929040000_steps3_5.sql` | Quality checks and their photo storage, live alerts for quality checks |
+| `20260929050000_kiosk.sql` | Snack counter: kiosk PIN, face data, one snack a day |
+| `20260929060000_kiosk_auto_faces.sql` | Snack counter learns faces from roster photos by itself |
 
-Your menu, students, photos and ratings stay in Supabase, so a new zip never replaces them.
-Don't run the seed files again; they would add the dummy data back.
+## New keys
 
-## 5. Set up the snack kiosk (v5 and later)
+Keys live in two places: `.env.local` on your laptop, and **Settings > Environment Variables** in the Vercel project.
+If a change needs a new key, add it in both, restart `npm run dev`, and redeploy on Vercel
+(**Deployments > ⋯ > Redeploy**) so the live site picks it up.
+
+## Snack counter setup (once)
+
 1. Sign in on the **Mess committee** tab and open **Kiosk**.
 2. Set a kiosk PIN (6 to 12 digits).
-3. Face data is automatic: the kiosk learns each face from the photos on the Students page by itself
-   (new students and changed photos are picked up within a few minutes). The **Check new photos now** button is
-   optional and lists photos without a clear face.
-4. On the counter laptop or phone, open `/kiosk` (for example http://localhost:3000/kiosk), type the PIN and allow the camera.
-   Students press **Take photo**, or switch to **ID card scan** and hold up their card. One snack per student per day.
-
-The camera only works on `localhost` or an `https://` site, so a phone can use the kiosk after you deploy.
-
-## 6. Turn on the AI summary (v4 and later, optional)
-The **AI** page writes a short summary of students' comments using the Claude API. Everything else works without it.
-
-1. Go to https://console.anthropic.com, sign in, add a little credit under **Billing**, then **API Keys > Create Key** and copy it.
-2. Open `.env.local` in VS Code and add a line at the end (no spaces, no quotes):
-
-   ```
-   ANTHROPIC_API_KEY=sk-ant-...your key...
-   ```
-
-3. Stop the app (**Ctrl+C**) and start it again with `npm run dev`. Env changes only load on start.
-
-Each summary is one short API call (a few cents at most). The key stays on your laptop's server side and never reaches students' browsers.
-
-Once everything works you can delete `messmate-old`.
-
-## Doing it with Claude Code instead
-Open the **new** folder in VS Code, run `claude` in the terminal, and say:
-"Copy .env.local from ../messmate-old, run npm install, and start the dev server."
-Claude Code can't reach your Supabase dashboard, so paste the SQL files there yourself.
+3. On the counter laptop or phone, open the **Snack counter** tab on the sign-in page (or `/kiosk`), type the PIN and
+   allow the camera. Face data is made automatically from the photos on the Students page. The
+   **Check new photos now** button on the Kiosk page is optional and lists photos without a clear face.
