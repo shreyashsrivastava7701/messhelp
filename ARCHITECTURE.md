@@ -154,7 +154,7 @@ messmate/
 │  └─ seed_*.sql, students.csv   optional dummy data
 ├─ public/                      NIT logo, face models (models/), students-template.csv
 ├─ .env.local                    your Supabase URL and key (never shared or committed)
-└─ README.md, RUN_LOCALLY.md, UPDATING.md, DEPLOY.md, CLAUDE.md, ARCHITECTURE.md
+└─ README.md, RUN_LOCALLY.md, UPDATING.md, DEPLOY.md, ARCHITECTURE.md
 ```
 
 ---
