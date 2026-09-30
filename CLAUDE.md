@@ -1,6 +1,6 @@
 # Chachu ka Mittar
 
-Mess app for Kailash Boys Hostel, NIT Hamirpur (folder and package still named `messmate`): menu, Yes / No opt-in, ratings, committee dashboard, live alerts, quality log, no-login snack counter. Next.js 15 (App Router, `src/`) + Tailwind 4 + Supabase (`@supabase/ssr`). Live at https://chachukamittar.vercel.app; Vercel deploys every push to `main`.
+Mess app for Kailash Boys Hostel, NIT Hamirpur: menu, Yes / No opt-in, ratings, committee dashboard, live alerts, quality log, no-login snack counter. Next.js 15 (App Router, `src/`) + Tailwind 4 + Supabase (`@supabase/ssr`). Live at https://chachukamittar.vercel.app; Vercel deploys every push to `main`.
 
 ## Commands
 - `npm run dev`: dev server on http://localhost:3000
