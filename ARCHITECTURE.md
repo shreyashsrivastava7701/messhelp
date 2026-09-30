@@ -112,7 +112,7 @@ for big folders). The committee's own login is used, and Storage policies only l
 ## 5. Folder map
 
 ```
-messmate/
+messhelp/
 ├─ src/
 │  ├─ middleware.ts              login check on every request
 │  ├─ app/
