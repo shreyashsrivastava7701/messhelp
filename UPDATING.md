@@ -1,6 +1,6 @@
 # Making and publishing changes (Mac)
 
-The code lives in your `messmate` folder, which is connected to GitHub. Vercel watches GitHub and rebuilds
+The code lives in your `messhelp` folder, which is connected to GitHub. Vercel watches GitHub and rebuilds
 https://chachukamittar.vercel.app by itself after every push. Your data (menu, students, photos, ratings) lives
 in Supabase, so code changes never touch it.
 
@@ -19,7 +19,7 @@ in Supabase, so code changes never touch it.
 When Claude sends you changed files:
 
 1. Stop the app with **Ctrl+C** if it's running.
-2. Put each file at the path given (replace the old one). Keep the same `messmate` folder: don't swap in a new
+2. Put each file at the path given (replace the old one). Keep the same `messhelp` folder: don't swap in a new
    folder, because that would lose the connection to GitHub.
 3. If `package.json` changed, run `npm install`.
 4. Run any new SQL file (see below), then commit and sync as above.
