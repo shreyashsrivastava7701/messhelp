@@ -13,7 +13,7 @@ Your keys file (`.env.local`) is never uploaded. The `.gitignore` file already k
 
 ## Part 1: Put the code on GitHub (about 5 minutes)
 
-1. Open your `messmate` folder in VS Code.
+1. Open your `messhelp` folder in VS Code.
 2. Click the **Source Control** icon in the left bar (the icon with three dots joined by lines), or press **Ctrl+Shift+G**.
 3. Click **Publish to GitHub**.
    - If a box asks you to install **Git** or the **Command Line Tools**, click **Install**, wait for it to finish, then click **Publish to GitHub** again.
