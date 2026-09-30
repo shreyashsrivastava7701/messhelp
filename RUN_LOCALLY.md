@@ -63,14 +63,14 @@ Then sign in on the **Mess committee** tab.
 ## Working with Claude Code
 1. Install the **Claude Code** extension from the VS Code marketplace, or in the terminal:
    `npm install -g @anthropic-ai/claude-code`
-2. In the VS Code terminal, inside the `messmate` folder, run `claude` and sign in the first time.
+2. In the VS Code terminal, inside the `messhelp` folder, run `claude` and sign in the first time.
 3. Claude Code reads `CLAUDE.md` automatically, so it already knows the stack, the commands and the conventions.
    Try asking, for example: `Add a "Jain food" option to the menu editor`.
 4. Keep `npm run dev` running in a second terminal tab so you can watch changes live in the browser.
 
 ## If something goes wrong
 - **`npm error EBADPLATFORM` or odd package errors:** you typed `npm install` and `npm run dev` on one line. Run them separately.
-- **`ENOENT ... package.json`:** you're not inside the `messmate` folder. Run `cd messmate` (or the folder's full path) first.
+- **`ENOENT ... package.json`:** you're not inside the `messhelp` folder. Run `cd messhelp` (or the folder's full path) first.
 - **"fetch failed" in the terminal, or a blank page after login:** `.env.local` has the wrong or old Supabase keys, or your
   Supabase project is paused (open it in the dashboard and click **Restore**). After fixing `.env.local`, stop the server
   (**Ctrl+C**) and run `npm run dev` again.
